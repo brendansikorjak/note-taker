@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-const app = express();
+const router = require('express').Router();
 
 // Read notes from db.json
-app.get('/api/notes', (req, res) => {
+router.get('/api/notes', (req, res) => {
   const notes = JSON.parse(
     fs.readFileSync(path.join(__dirname, '../db/db.json'))
   );
@@ -12,7 +12,7 @@ app.get('/api/notes', (req, res) => {
 });
 
 // Save a new note
-app.post('/api/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
   const newNote = req.body;
   const notes = JSON.parse(
     fs.readFileSync(path.join(__dirname, '../db/db.json'))
@@ -32,3 +32,5 @@ app.post('/api/notes', (req, res) => {
 
   res.json(newNote);
 });
+
+module.exports = router;
