@@ -1,7 +1,7 @@
 const express = require('express');
 const apiroutes = require('./routes/apiRoutes');
 const htmlroutes = require('./routes/htmlRoutes');
-const PORT = 3001;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -13,6 +13,6 @@ app.use(express.static('public'));
 app.use(apiroutes);
 app.use(htmlroutes);
 
-app.listen(PORT, () => {
-  console.log(`Example app listening at http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
 });
